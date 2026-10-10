@@ -1,0 +1,189 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Premium Apple-style Design System */
+    --background: 210 28% 9%;
+    --foreground: 210 20% 93%;
+
+    --card: 0 0% 100% / 0.08;
+    --card-foreground: 210 20% 93%;
+
+    --popover: 210 28% 11%;
+    --popover-foreground: 210 20% 93%;
+
+    /* Brand Teal */
+    --primary: 168 71% 48%;
+    --primary-foreground: 210 28% 9%;
+    --primary-hover: 168 66% 44%;
+
+    /* Secondary/Accent */
+    --secondary: 210 20% 70%;
+    --secondary-foreground: 210 28% 9%;
+
+    /* Muted & Subtle */
+    --muted: 210 20% 30%;
+    --muted-foreground: 210 10% 60%;
+
+    /* Info Blue */
+    --accent: 204 92% 62%;
+    --accent-foreground: 210 20% 93%;
+
+    /* Danger/Destructive */
+    --destructive: 0 85% 70%;
+    --destructive-foreground: 210 20% 93%;
+
+    /* Borders & Inputs */
+    --border: 0 0% 100% / 0.12;
+    --input: 0 0% 100% / 0.08;
+    --ring: 168 71% 48%;
+
+    --radius: 0.75rem;
+
+    /* Process Colors */
+    --process-teal: 168 71% 48%;
+    --process-blue: 204 92% 62%;
+    --process-purple: 256 65% 72%;
+    --process-amber: 36 85% 65%;
+
+    /* Glass Effect */
+    --glass-bg: 0 0% 100% / 0.08;
+    --glass-border: 0 0% 100% / 0.12;
+    --glass-highlight: 0 0% 100% / 0.08;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(10deg, hsl(168 71% 48%), hsl(168 66% 44%));
+    --gradient-bg: linear-gradient(180deg, hsl(210 30% 8%), hsl(210 28% 11%));
+    --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04));
+    
+    /* Shadows */
+    --shadow-card: 0 8px 24px rgba(0, 0, 0, 0.35);
+    --shadow-focus: 0 0 0 3px hsl(168 71% 48% / 0.35);
+    --shadow-hover: 0 6px 14px rgba(0, 0, 0, 0.35);
+    --shadow-elevation: 0 12px 32px rgba(0, 0, 0, 0.4);
+    
+    /* Transitions */
+    --transition-smooth: all 0.16s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    background: linear-gradient(180deg, hsl(210 30% 8%) 0%, hsl(210 28% 11%) 100%);
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', system-ui, sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: var(--shadow-card);
+  }
+  
+  .glass-highlight {
+    position: relative;
+  }
+  
+  .glass-highlight::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+  }
+  
+  .animate-slide-in {
+    animation: slideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .animate-scale-in {
+    animation: scaleIn 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 10px hsl(var(--neon-cyan) / 0.3), 0 0 20px hsl(var(--neon-cyan) / 0.1);
+  }
+  to {
+    box-shadow: 0 0 20px hsl(var(--neon-cyan) / 0.5), 0 0 40px hsl(var(--neon-cyan) / 0.2);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes bounceIn {
+  from {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
